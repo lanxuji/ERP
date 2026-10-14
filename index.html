@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>离型膜厂 ERP</title>
+    <script type="module" crossorigin src="./assets/index-CwAWNIOq.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Cd_N7VBg.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="toast-root"></div>
+
+    <!-- 错误兜底：JS 未执行时给出可见提示，避免白屏无从排查 -->
+    <div id="boot-error" style="display:none;position:fixed;inset:0;background:#0f172a;color:#e2e8f0;font-family:system-ui,'Microsoft YaHei',sans-serif;padding:32px;overflow:auto;z-index:99999">
+      <div style="max-width:720px;margin:0 auto">
+        <h1 style="font-size:20px;margin:0 0 8px">页面未正常加载</h1>
+        <p style="color:#94a3b8;font-size:13px;margin:0 0 16px">下面是具体原因，把它发给开发者即可定位：</p>
+        <pre id="boot-error-msg" style="background:#1e293b;padding:14px;border-radius:8px;font-size:12px;white-space:pre-wrap;line-height:1.6"></pre>
+        <p style="color:#94a3b8;font-size:12px;margin-top:16px">
+          常见原因：① 上传时文件夹多套了一层；② 浏览器缓存，按 Ctrl+Shift+R 硬刷新试试。
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // 捕获脚本加载/运行错误
+      var _bootErrs = [];
+      window.addEventListener('error', function (e) {
+        if (e.target && e.target.tagName === 'SCRIPT') {
+          _bootErrs.push('脚本加载失败：' + (e.target.src || '(inline)'));
+        } else if (e.message) {
+          _bootErrs.push(e.message);
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function (e) {
+        _bootErrs.push('Promise 未捕获：' + (e.reason && e.reason.message ? e.reason.message : e.reason));
+      });
+
+      // 3 秒后若 #root 仍为空，则显示错误面板
+      setTimeout(function () {
+        var root = document.getElementById('root');
+        var empty = !root || !root.innerHTML || root.innerHTML.trim() === '';
+        if (empty) {
+          var msg = _bootErrs.length ? _bootErrs.join('\n\n') :
+            '页面脚本已加载但 #root 仍为空（无 JS 报错）。\n请确认上传的文件夹第一层直接包含 index.html 与 assets 目录。';
+          document.getElementById('boot-error-msg').textContent = msg;
+          document.getElementById('boot-error').style.display = 'block';
+        }
+      }, 3000);
+    </script>
+
+  </body>
+</html>
